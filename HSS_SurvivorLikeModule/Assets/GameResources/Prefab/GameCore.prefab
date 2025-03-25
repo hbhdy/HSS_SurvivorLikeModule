@@ -45,5 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  enemy: {fileID: 0}
+  enemyPrefab: {fileID: 504317470473628708, guid: 39ea036dec2ce9846990425c3ef486ee, type: 3}
+  projectilePrefab: {fileID: 6681314924742675114, guid: 52da4b629e2c92e439f85b11dd4bb128, type: 3}
+  trEnemySpawnParent: {fileID: 0}
   managerList: []

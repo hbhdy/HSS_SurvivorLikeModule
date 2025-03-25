@@ -39,4 +39,12 @@ public class Enemy : MonoBehaviour
         rigid.MovePosition(rigid.position + toVec);
         rigid.linearVelocity = Vector2.zero;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Projectile"))
+            return;
+
+        
+    }
 }

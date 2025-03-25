@@ -12,6 +12,7 @@ namespace HSS
 
         public Player player;
         public Enemy enemyPrefab;
+        public Projectile projectilePrefab;
         public Transform trEnemySpawnParent;
 
         [Header("Base Managers")]
@@ -38,6 +39,7 @@ namespace HSS
             yield return null;
 
             ObjectPool.CreatePool(enemyPrefab, 20);
+            ObjectPool.CreatePool(projectilePrefab, 20);
         }
 
         //public IEnumerator Start()

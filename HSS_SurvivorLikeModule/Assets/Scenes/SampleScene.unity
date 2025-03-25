@@ -318,7 +318,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: -9163426285224168042, guid: 4a2c2fe8ef2340242a015b292bac57e5, type: 3}
+  m_Sprite: {fileID: 2436689576485346197, guid: dc108b5640c0ca24caf63e7b1dce6d77, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -688,7 +688,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: -9163426285224168042, guid: 4a2c2fe8ef2340242a015b292bac57e5, type: 3}
+  m_Sprite: {fileID: 2436689576485346197, guid: dc108b5640c0ca24caf63e7b1dce6d77, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1119,7 +1119,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: -9163426285224168042, guid: 4a2c2fe8ef2340242a015b292bac57e5, type: 3}
+  m_Sprite: {fileID: 2436689576485346197, guid: dc108b5640c0ca24caf63e7b1dce6d77, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1294,7 +1294,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: -9163426285224168042, guid: 4a2c2fe8ef2340242a015b292bac57e5, type: 3}
+  m_Sprite: {fileID: 2436689576485346197, guid: dc108b5640c0ca24caf63e7b1dce6d77, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1321,10 +1321,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1018066022}
-    - target: {fileID: 5879684186200684949, guid: 90ef15a0f4a566342b0caf7b7b562fcf, type: 3}
-      propertyPath: enemyPrefab
-      value: 
-      objectReference: {fileID: 504317470473628708, guid: 39ea036dec2ce9846990425c3ef486ee, type: 3}
     - target: {fileID: 5879684186200684949, guid: 90ef15a0f4a566342b0caf7b7b562fcf, type: 3}
       propertyPath: trEnemySpawnParent
       value: 
@@ -1425,6 +1421,10 @@ PrefabInstance:
     - target: {fileID: 8927394498523043254, guid: e6bf6299e5ab0e948be634a3464cc4f3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9180344793823703766, guid: e6bf6299e5ab0e948be634a3464cc4f3, type: 3}
+      propertyPath: viewRadius
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
