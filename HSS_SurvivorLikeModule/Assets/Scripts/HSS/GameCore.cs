@@ -18,8 +18,9 @@ namespace HSS
         [Header("Base Managers")]
         public List<BaseManager> managerList;
 
+        public static ProjectileManager PROJECTILE { get { return Instance.Get<ProjectileManager>(); } }
+
         private Dictionary<Type, BaseManager> dicManagers = new Dictionary<Type, BaseManager>();
-        private float deltaTime = 0f;
         private Vector3 spawnPos = Vector3.zero;
         private Vector3 dirPos = Vector3.zero;
 
@@ -36,7 +37,24 @@ namespace HSS
 
         public IEnumerator Start()
         {
+            // 기본 프로젝트 내부 설정 처리
+            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+            Application.targetFrameRate = 60;
+            Time.timeScale = 1f;
+
             yield return null;
+
+            dicManagers.Clear();
+            for (int i = 0; i < managerList.Count; i++)
+            {
+                yield return StartCoroutine(managerList[i].Co_Init());
+
+                var type = managerList[i].GetType();
+                dicManagers.Add(type, managerList[i]);
+            }
+
+            isCoreReady = true;
+            yield return new WaitUntil(() => isCoreReady);
 
             ObjectPool.CreatePool(enemyPrefab, 20);
             ObjectPool.CreatePool(projectilePrefab, 20);
@@ -104,7 +122,7 @@ namespace HSS
                 dirPos = UnityEngine.Random.insideUnitCircle.normalized;
                 spawnPos = player.transform.position + dirPos * StaticGameData.spawnDistance;
                 Enemy enemy = enemyPrefab.Spawn(trEnemySpawnParent, spawnPos);
-                enemy.Init(player.GetRigid());
+                enemy.Init(player.GetRigid(), 20f);
             }
         }
     }

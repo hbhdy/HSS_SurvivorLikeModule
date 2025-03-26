@@ -18,12 +18,12 @@ public class Projectile : MonoBehaviour
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
-        trail = GetComponent<TrailRenderer>();
+        trail = GetComponentInChildren<TrailRenderer>();
     }
 
     public void Init(float damage, int per, float time, Vector2 dir)
     {
-        //this.transform.rotation = Quaternion.FromToRotation(Vector3.up, dir);
+        this.transform.rotation = Quaternion.FromToRotation(Vector3.up, dir);
         this.damage = damage;
         this.per = per;
         this.time = time;
@@ -33,6 +33,34 @@ public class Projectile : MonoBehaviour
             rigid.linearVelocity = dir * 10f;
     }
 
+    private void OnEnable()
+    {
+        GameCore.PROJECTILE.AddProjectile(this);
+    }
+
+    private void OnDisable()
+    {
+        GameCore.PROJECTILE.RemoveProjectile(this);
+    }
+
+    // ----- Set -----
+
+    public void SetRecycle()
+    {
+        trail.Clear();
+        rigid.linearVelocity = Vector2.zero;
+        gameObject.Recycle();
+    }
+
+    // ----- Get -----
+
+    public bool IsLifeTimeCheck()
+    {
+        time -= Time.deltaTime;
+        return time <= 0f;
+    }
+
+    // ----- Main -----
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -42,17 +70,6 @@ public class Projectile : MonoBehaviour
         per--;
 
         if (per <= 0)
-        {
-            trail.Clear();
-            rigid.linearVelocity = Vector2.zero;
-            gameObject.Recycle();
-        }
+            SetRecycle();
     }
-
-    // ----- Set -----
-
-    // ----- Get -----
-
-    // ----- Main -----
-
 }

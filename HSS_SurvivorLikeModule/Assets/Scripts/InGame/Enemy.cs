@@ -1,3 +1,5 @@
+using ExcelDataReader.Core;
+using HSS;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -5,22 +7,31 @@ public class Enemy : MonoBehaviour
     // ----- Param -----
 
     public float speed;
+    public float hp;
+
+    [HideInInspector]
     public Rigidbody2D target;
 
     private bool isLive = false;
     private Rigidbody2D rigid;
+    private Collider2D coll;
 
     // ----- Init -----
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+        coll = GetComponent<Collider2D>();
     }
 
-    public void Init(Rigidbody2D target)
+    public void Init(Rigidbody2D target, float hp)
     {
-        isLive = true;
         this.target = target;
+        this.hp = hp;
+
+        isLive = true;
+        coll.enabled = true;
+        rigid.simulated = true;
     }
 
     // ----- Set -----
@@ -45,6 +56,19 @@ public class Enemy : MonoBehaviour
         if (!collision.CompareTag("Projectile"))
             return;
 
-        
+        hp -= collision.GetComponent<Projectile>().damage;
+
+        if (hp <= 0)
+        {
+            Recycle();
+        }
+    }
+
+    private void Recycle()
+    {
+        isLive = false;
+        coll.enabled = false;
+        rigid.simulated = false;
+        gameObject.Recycle();
     }
 }

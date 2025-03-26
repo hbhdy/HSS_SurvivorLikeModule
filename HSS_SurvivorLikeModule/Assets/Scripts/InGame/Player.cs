@@ -40,6 +40,8 @@ public class Player : MonoBehaviour
         }
     }
 
+    // 해당 로직은 무기로 분할 예정
+
     private void Fire()
     {
         if (!fov.trTarget)
@@ -49,6 +51,6 @@ public class Player : MonoBehaviour
         Vector3 dir = (targetPos - transform.position).normalized;
 
         Projectile projectile = GameCore.Instance.projectilePrefab.Spawn(GameCore.Instance.trEnemySpawnParent, transform.position);
-        projectile.Init(0, 1, 0, dir);
+        projectile.Init(5, 1, 3, dir);
     }
 }

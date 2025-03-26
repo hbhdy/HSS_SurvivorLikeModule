@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  hp: 0
   target: {fileID: 0}
 --- !u!114 &3919464983825632630
 MonoBehaviour:
