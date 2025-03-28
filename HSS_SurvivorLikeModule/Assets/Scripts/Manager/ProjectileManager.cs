@@ -7,7 +7,7 @@ public class ProjectileManager : BaseManager
 {
     // ----- Param -----
 
-    public List<Projectile> projectileLists = new List<Projectile>();
+    public List<Projectile> projectileLists = new();
 
     // ----- Init -----
 

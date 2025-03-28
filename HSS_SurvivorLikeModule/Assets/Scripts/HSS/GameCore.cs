@@ -19,6 +19,7 @@ namespace HSS
         public List<BaseManager> managerList;
 
         public static ProjectileManager PROJECTILE { get { return Instance.Get<ProjectileManager>(); } }
+        public static ResourceManager RSS { get { return Instance.Get<ResourceManager>(); } }
 
         private Dictionary<Type, BaseManager> dicManagers = new Dictionary<Type, BaseManager>();
         private Vector3 spawnPos = Vector3.zero;

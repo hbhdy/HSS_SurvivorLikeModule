@@ -1,15 +1,21 @@
 using HSS;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    // ----- Param -----
+
     public float speed;
 
+    private List<IWeapon> weapons = new List<IWeapon>();
     private Vector2 inputVec2;
     private Rigidbody2D rigid;
     private FOV2D fov;
     private float attackSpeed;
+
+    // ----- Init -----
 
     private void Awake()
     {
@@ -17,27 +23,31 @@ public class Player : MonoBehaviour
         fov = GetComponent<FOV2D>();
     }
 
-    public Vector2 GetInputVector2() => inputVec2;
-
-    public Rigidbody2D GetRigid() => rigid;
+    // ----- Set -----
 
     private void OnMove(InputValue value)
     {
         inputVec2 = value.Get<Vector2>();
     }
 
+    // ----- Get -----
+
+    public Vector2 GetInputVector2() => inputVec2;
+
+    public Rigidbody2D GetRigid() => rigid;
+
+    // ----- Main -----
+
+    private void Update()
+    {
+        foreach (var weapon in weapons)
+            weapon.Tick(Time.deltaTime);
+    }
+
     private void FixedUpdate()
     {
         Vector2 moveVec = inputVec2 * speed * Time.fixedDeltaTime;
         rigid.MovePosition(rigid.position + moveVec);
-
-        attackSpeed += Time.fixedDeltaTime;
-
-        if (attackSpeed >= 0.2f)
-        {
-            attackSpeed = 0;
-            Fire();
-        }
     }
 
     // 해당 로직은 무기로 분할 예정

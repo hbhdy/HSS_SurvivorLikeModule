@@ -19,6 +19,11 @@ public class FOV2D : MonoBehaviour
     [HideInInspector]
     public bool isTargetInside = false;
 
+    public void Init(float range)
+    {
+        this.viewRadius = range;
+    }
+
     private void FixedUpdate()
     {
         visibleTargets = Physics2D.OverlapCircleAll((Vector2)transform.position, viewRadius, targetLayer);

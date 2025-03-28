@@ -1,4 +1,4 @@
-using Mono.Cecil;
+using HSS;
 using UnityEngine;
 
 public interface IWeapon
@@ -11,11 +11,23 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
 {
     // ----- Param -----
 
+    public abstract ProjectileType ProjectileType { get; }
+
+    protected FOV2D fov;
     protected Transform trPlyaer;
+
+    protected int penetration;
+    protected float damage;
     protected float cooldown;
     protected float timer;
+    protected float lifeTime;
 
     // ----- Init -----
+
+    private void Awake()
+    {
+        fov = GetComponent<FOV2D>();
+    }
 
     public void Init(Transform trPlayer)
     {
@@ -30,7 +42,7 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
         if(timer >= cooldown)
         {
             timer = 0;
-            Attack();
+            TryAttack();
         }
     }
 
@@ -38,7 +50,13 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
 
     // ----- Main -----
 
+    private void TryAttack()
+    {
+        if (!fov.trTarget)
+            return;
+
+        Attack();
+    }
+
     protected abstract void Attack();
-
-
 }

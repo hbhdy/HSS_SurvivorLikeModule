@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7317237091647216509}
   - component: {fileID: 6681314924742675114}
   m_Layer: 0
-  m_Name: WhiteBall
+  m_Name: Bullet
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

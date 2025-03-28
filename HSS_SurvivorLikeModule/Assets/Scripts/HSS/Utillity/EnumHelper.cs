@@ -42,4 +42,21 @@ namespace HSS
     {
         None,
     }
+
+    public enum WeaponType
+    {
+        None,
+
+        Bow,
+        Gun,
+        Knife,
+    }
+
+    public enum ProjectileType
+    {
+        None,
+
+        Bullet,
+        Arrow,
+    }
 }
