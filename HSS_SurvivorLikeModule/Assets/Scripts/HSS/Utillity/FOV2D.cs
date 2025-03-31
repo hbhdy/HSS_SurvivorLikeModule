@@ -72,7 +72,10 @@ public class FOV2D : MonoBehaviour
         Gizmos.color = isTargetInside ? Color.red : Color.green;
 
         foreach (var target in visibleTargets)
-            Gizmos.DrawLine(transform.position, target.transform.position);
+        {
+            if (target != null)
+                Gizmos.DrawLine(transform.position, target.transform.position);
+        }
     }
 
     public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)

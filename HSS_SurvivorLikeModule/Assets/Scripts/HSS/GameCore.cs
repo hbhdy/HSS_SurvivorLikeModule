@@ -125,6 +125,16 @@ namespace HSS
                 Enemy enemy = enemyPrefab.Spawn(trEnemySpawnParent, spawnPos);
                 enemy.Init(player.GetRigid(), 20f);
             }
+
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                player.AddWeapon(WeaponType.Bow);
+            }
+
+            if (Input.GetKeyDown(KeyCode.U))
+            {
+                player.AddWeapon(WeaponType.Knife, true);
+            }
         }
     }
 }

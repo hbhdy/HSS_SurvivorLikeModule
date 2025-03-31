@@ -27,7 +27,7 @@ public class ResourceManager : BaseManager
 
     // ----- Get -----
 
-    public IWeapon GetWeapon(WeaponType type) => resources.GetWeapon(type);
+    public WeaponBase GetWeapon(WeaponType type) => resources.GetWeapon(type);
 
     public Projectile GetProjectile(ProjectileType type) => resources.GetProjectile(type);
 

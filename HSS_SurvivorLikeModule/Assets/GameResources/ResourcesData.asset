@@ -15,5 +15,8 @@ MonoBehaviour:
   Projectiles:
   - {fileID: 927291442349979418, guid: 2972aaaf0ee722c4391280cc85079772, type: 3}
   - {fileID: 927291442349979418, guid: 52da4b629e2c92e439f85b11dd4bb128, type: 3}
+  - {fileID: 1825344963852197357, guid: 7ba3b6f87a0868140be1c3387066c873, type: 3}
   Weapons:
   - {fileID: 233698498126342683, guid: 282dfb58ad8ccc846931534170f8b238, type: 3}
+  - {fileID: 7983688200321507898, guid: 160a7041d73600d42965f025c32a836b, type: 3}
+  - {fileID: 2344320983670182984, guid: 785ffe9b660219b4cb62dcbefdbafc8c, type: 3}

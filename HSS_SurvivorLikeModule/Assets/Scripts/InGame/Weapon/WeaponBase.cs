@@ -16,20 +16,23 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
     protected FOV2D fov;
     protected Transform trPlyaer;
 
-    protected int penetration;
-    protected float damage;
-    protected float cooldown;
+    protected int penetration = 1;
+    protected float damage = 3;
+    protected float cooldown = 1;
     protected float timer;
-    protected float lifeTime;
+    protected float lifeTime = 3;
+
+    public int count;
 
     // ----- Init -----
 
     private void Awake()
     {
-        fov = GetComponent<FOV2D>();
+        TryGetComponent<FOV2D>(out fov);
+        //fov = GetComponent<FOV2D>();
     }
 
-    public void Init(Transform trPlayer)
+    public virtual void Init(Transform trPlayer)
     {
         this.trPlyaer = trPlayer;
     }
@@ -46,13 +49,21 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
         }
     }
 
+    public virtual void LevelUp(float damage)
+    {
+        this.damage = damage;
+
+        if (count > 0)
+            count++;
+    }
+
     // ----- Get -----
 
     // ----- Main -----
 
     private void TryAttack()
     {
-        if (!fov.trTarget)
+        if (!fov?.trTarget)
             return;
 
         Attack();

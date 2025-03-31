@@ -39,7 +39,7 @@ public class ProjectileManager : BaseManager
         for (int i = projectileLists.Count - 1; i >= 0; i--)
         {
             var p = projectileLists[i];
-            if (p.IsLifeTimeCheck())
+            if (p.IsLifeTimeCheck() && p.per != -1)
                 p.SetRecycle();
         }
     }

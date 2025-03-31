@@ -58,5 +58,6 @@ namespace HSS
 
         Bullet,
         Arrow,
+        Knife,
     }
 }

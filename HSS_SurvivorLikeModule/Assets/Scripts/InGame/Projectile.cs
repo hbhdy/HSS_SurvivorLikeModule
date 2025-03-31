@@ -12,35 +12,38 @@ public class Projectile : MonoBehaviour
     private Rigidbody2D rigid;
     private TrailRenderer trail;
 
-
     // ----- Init -----
 
     private void Awake()
     {
-        rigid = GetComponent<Rigidbody2D>();
+        TryGetComponent<Rigidbody2D>(out rigid);
         trail = GetComponentInChildren<TrailRenderer>();
     }
 
     public void Init(float damage, int per, float time, Vector2 dir)
     {
-        this.transform.rotation = Quaternion.FromToRotation(Vector3.up, dir);
         this.damage = damage;
         this.per = per;
         this.time = time;
 
-        // 包烹仿 贸府
+        // 包烹仿 贸府, -1篮 公茄 包烹
         if (per > -1)
+        {
+            this.transform.rotation = Quaternion.FromToRotation(Vector3.up, dir);
             rigid.linearVelocity = dir * 10f;
+        }
     }
 
     private void OnEnable()
     {
-        GameCore.PROJECTILE.AddProjectile(this);
+        if (this != null)
+            GameCore.PROJECTILE.AddProjectile(this);
     }
 
     private void OnDisable()
     {
-        GameCore.PROJECTILE.RemoveProjectile(this);
+        if (this != null)
+            GameCore.PROJECTILE.RemoveProjectile(this);
     }
 
     // ----- Set -----

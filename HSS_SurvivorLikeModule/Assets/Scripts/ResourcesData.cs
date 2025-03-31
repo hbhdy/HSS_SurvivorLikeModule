@@ -12,7 +12,7 @@ public class ResourcesData : ScriptableObject
     public List<GameObject> Projectiles = new();
     public List<GameObject> Weapons = new();
 
-    private Dictionary<WeaponType, IWeapon> dicWeapons = new();
+    private Dictionary<WeaponType, WeaponBase> dicWeapons = new();
     private Dictionary<ProjectileType, Projectile> dicProjectiles = new();
 
     // ----- Init -----
@@ -25,7 +25,7 @@ public class ResourcesData : ScriptableObject
             string typeName = type.ToString();
             var prefab = Weapons.Find(x => x.name.StartsWith(typeName + "Weapon"));
             if (prefab != null)
-                dicWeapons[type] = prefab.GetComponent<IWeapon>();
+                dicWeapons[type] = prefab.GetComponent<WeaponBase>();
         }
 
         foreach (ProjectileType type in Enum.GetValues(typeof(ProjectileType)))
@@ -41,7 +41,7 @@ public class ResourcesData : ScriptableObject
 
     // ----- Get -----
 
-    public IWeapon GetWeapon(WeaponType type) => dicWeapons[type];
+    public WeaponBase GetWeapon(WeaponType type) => dicWeapons[type];
 
     public Projectile GetProjectile(ProjectileType type) => dicProjectiles[type];
 
