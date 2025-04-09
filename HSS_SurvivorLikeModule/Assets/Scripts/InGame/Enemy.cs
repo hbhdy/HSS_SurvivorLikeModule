@@ -56,12 +56,18 @@ public class Enemy : MonoBehaviour
         if (!collision.CompareTag("Projectile"))
             return;
 
-        hp -= collision.GetComponent<Projectile>().damage;
+        Hit(collision.GetComponent<Projectile>().damage);
+    }
+
+    public void Hit(float damage)
+    {
+        if (!isLive)
+            return;
+
+        hp -= damage;
 
         if (hp <= 0)
-        {
             Recycle();
-        }
     }
 
     private void Recycle()

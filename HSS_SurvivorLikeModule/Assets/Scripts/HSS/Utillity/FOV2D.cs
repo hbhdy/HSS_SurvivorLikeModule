@@ -52,6 +52,15 @@ public class FOV2D : MonoBehaviour
         return tr;
     }
 
+    public IEnumerable<Transform> GetAllDetectedTargets()
+    {
+        foreach (var col in visibleTargets)
+        {
+            if (col != null)
+                yield return col.transform;
+        }
+    }
+
     public void OnDrawGizmos()
     {
         // 기본 색상 설정

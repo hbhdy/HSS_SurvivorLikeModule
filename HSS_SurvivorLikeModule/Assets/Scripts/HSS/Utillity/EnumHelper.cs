@@ -50,6 +50,7 @@ namespace HSS
         Bow,
         Gun,
         Knife,
+        Aura,
     }
 
     public enum ProjectileType

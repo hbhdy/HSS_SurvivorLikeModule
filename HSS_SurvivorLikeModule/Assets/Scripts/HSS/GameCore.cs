@@ -128,7 +128,7 @@ namespace HSS
 
             if (Input.GetKeyDown(KeyCode.T))
             {
-                player.AddWeapon(WeaponType.Bow);
+                player.AddWeapon(WeaponType.Aura);
             }
 
             if (Input.GetKeyDown(KeyCode.U))

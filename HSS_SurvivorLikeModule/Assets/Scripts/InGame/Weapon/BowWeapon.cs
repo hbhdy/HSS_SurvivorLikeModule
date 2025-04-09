@@ -20,7 +20,7 @@ public class BowWeapon : WeaponBase
         Vector3 targetPos = fov.trTarget.position;
         Vector3 dir = (targetPos - transform.position).normalized;
 
-        Projectile projectile = GameCore.RSS.GetProjectile(ProjectileType).Spawn(GameCore.Instance.trEnemySpawnParent, transform.position).GetComponent<Projectile>();
+        Projectile projectile = GameCore.RSS.GetProjectile(ProjectileType).Spawn(GameCore.Instance.trEnemySpawnParent, transform.position);
         projectile.Init(damage, penetration, lifeTime, dir);
     }
 }
